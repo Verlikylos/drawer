@@ -2,9 +2,8 @@
 // Project: https://github.com/react-component/drawer
 // Definitions by: jljsj33 <https://github.com/jljsj33>
 // Definitions: https://github.com/react-component/drawer
-import type { GetContainer } from 'rc-util/lib/PortalWrapper';
-import type * as React from 'react';
-import type ScrollLocker from 'rc-util/lib/Dom/scrollLocker';
+import * as React from 'react';
+import type ScrollLocker from './utils/scrollLocker';
 
 export type IPlacement = 'left' | 'top' | 'right' | 'bottom';
 
@@ -31,8 +30,8 @@ interface IProps extends Omit<React.HTMLAttributes<any>, 'onChange'> {
   maskStyle?: React.CSSProperties;
   onChange?: (open?: boolean) => void;
   afterVisibleChange?: (open: boolean) => void;
-  onHandleClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
-  onClose?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onHandleClick?: (e: React.MouseEvent<any> | React.KeyboardEvent<any>) => void;
+  onClose?: (e: React.MouseEvent<any> | React.KeyboardEvent<any>) => void;
   keyboard?: boolean;
   contentWrapperStyle?: React.CSSProperties;
   autoFocus?: boolean;
@@ -41,7 +40,7 @@ interface IProps extends Omit<React.HTMLAttributes<any>, 'onChange'> {
 export interface IDrawerProps extends IProps {
   wrapperClassName?: string;
   forceRender?: boolean;
-  getContainer?: GetContainer;
+  getContainer?: string | HTMLElement | (() => HTMLElement);
 }
 
 export interface IDrawerChildProps extends IProps {

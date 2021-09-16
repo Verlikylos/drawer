@@ -24,7 +24,7 @@ export const transitionEnd: string = transitionEndObject[transitionStr];
 export function addEventListener(
   target: HTMLElement,
   eventType: string,
-  callback: (e: React.TouchEvent | TouchEvent | Event) => void,
+  callback: (e: React.TouchEvent<HTMLElement> | TouchEvent | Event) => void,
   options?: any,
 ) {
   if (target.addEventListener) {
@@ -38,7 +38,7 @@ export function addEventListener(
 export function removeEventListener(
   target: HTMLElement,
   eventType: string,
-  callback: (e: React.TouchEvent | TouchEvent | Event) => void,
+  callback: (e: React.TouchEvent<HTMLElement> | TouchEvent | Event) => void,
   options?: any,
 ) {
   if (target.removeEventListener) {

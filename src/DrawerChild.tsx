@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
-import KeyCode from 'rc-util/lib/KeyCode';
-import omit from 'rc-util/lib/omit';
+import getScrollBarSize from './utils/getScrollBarSize';
+import KeyCode from './utils/KeyCode';
+import omit from './utils/omit'
 
 import type { IDrawerChildProps } from './IDrawerPropTypes';
 
@@ -156,7 +156,7 @@ class DrawerChild extends React.Component<IDrawerChildProps, IState> {
     }
   };
 
-  private removeStartHandler = (e: React.TouchEvent | TouchEvent) => {
+  private removeStartHandler = (e: React.TouchEvent<HTMLElement> | TouchEvent) => {
     if (e.touches.length > 1) {
       return;
     }
@@ -166,7 +166,7 @@ class DrawerChild extends React.Component<IDrawerChildProps, IState> {
     };
   };
 
-  private removeMoveHandler = (e: React.TouchEvent | TouchEvent) => {
+  private removeMoveHandler = (e: React.TouchEvent<HTMLElement> | TouchEvent) => {
     if (e.changedTouches.length > 1) {
       return;
     }
@@ -195,7 +195,7 @@ class DrawerChild extends React.Component<IDrawerChildProps, IState> {
     dom.style.transition = '';
   };
 
-  private onKeyDown = (e: React.KeyboardEvent) => {
+  private onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.keyCode === KeyCode.ESC) {
       const { onClose } = this.props;
       e.stopPropagation();
@@ -205,7 +205,7 @@ class DrawerChild extends React.Component<IDrawerChildProps, IState> {
     }
   };
 
-  private onWrapperTransitionEnd = (e: React.TransitionEvent) => {
+  private onWrapperTransitionEnd = (e: React.TransitionEvent<HTMLElement>) => {
     const { open, afterVisibleChange } = this.props;
     if (
       e.target === this.contentWrapper &&
@@ -509,7 +509,7 @@ class DrawerChild extends React.Component<IDrawerChildProps, IState> {
     const handlerChildren =
       handler &&
       React.cloneElement(handler, {
-        onClick: (e: React.MouseEvent) => {
+        onClick: (e: React.MouseEvent<HTMLElement>) => {
           if (handler.props.onClick) {
             handler.props.onClick();
           }

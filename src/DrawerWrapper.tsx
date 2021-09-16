@@ -1,8 +1,8 @@
-import Portal from 'rc-util/lib/PortalWrapper';
 import * as React from 'react';
 
 import Child from './DrawerChild';
 import type { IDrawerProps, IDrawerChildProps } from './IDrawerPropTypes';
+import { Portal } from './Portal'
 
 interface IState {
   open: boolean;
@@ -68,7 +68,7 @@ class DrawerWrapper extends React.Component<IDrawerProps, IState> {
     }
   }
 
-  private onHandleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+  private onHandleClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
     const { onHandleClick, open: $open } = this.props;
     if (onHandleClick) {
       onHandleClick(e);
@@ -81,7 +81,7 @@ class DrawerWrapper extends React.Component<IDrawerProps, IState> {
     }
   };
 
-  private onClose = (e: React.MouseEvent | React.KeyboardEvent) => {
+  private onClose = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
     const { onClose, open } = this.props;
     if (onClose) {
       onClose(e);
@@ -131,6 +131,7 @@ class DrawerWrapper extends React.Component<IDrawerProps, IState> {
       <Portal
         visible={open}
         forceRender={$forceRender}
+        // @ts-ignore
         getContainer={getContainer}
         wrapperClassName={wrapperClassName}
       >
