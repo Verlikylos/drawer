@@ -25,6 +25,8 @@ export var Portal = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this$props$didUpdate, _this$props;
 
+      // @ts-ignore
+      this.props.innerRef({});
       (_this$props$didUpdate = (_this$props = this.props).didUpdate) === null || _this$props$didUpdate === void 0 ? void 0 : _this$props$didUpdate.call(_this$props, this.props);
     }
   }, {
@@ -51,7 +53,8 @@ export var Portal = /*#__PURE__*/function (_React$Component) {
         this.initRef = true;
       }
 
-      return this.containerRef ? ReactDOM.unstable_renderSubtreeIntoContainer(this, React.Children.only(this.props.children), this.containerRef) : null;
+      this.containerRef ? ReactDOM.unstable_renderSubtreeIntoContainer(this, React.Children.only(this.props.children), this.containerRef) : null;
+      return null;
     }
   }]);
 

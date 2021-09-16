@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Child from './DrawerChild';
 import type { IDrawerProps, IDrawerChildProps } from './IDrawerPropTypes';
-import { Portal } from './Portal'
+import { default as Portal } from './PortalWrapper'
 
 interface IState {
   open: boolean;

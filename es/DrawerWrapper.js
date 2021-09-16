@@ -8,7 +8,7 @@ var _excluded = ["defaultOpen", "getContainer", "wrapperClassName", "forceRender
     _excluded2 = ["visible", "afterClose"];
 import * as React from 'react';
 import Child from './DrawerChild';
-import { Portal } from './Portal';
+import { default as Portal } from './PortalWrapper';
 
 var DrawerWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits(DrawerWrapper, _React$Component);

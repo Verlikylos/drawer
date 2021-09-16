@@ -2,11 +2,12 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import canUseDom from './utils/canUseDom';
 
-
+export type PortalRef = {};
 export interface PortalProps {
   didUpdate?: (prevProps: PortalProps) => void;
   getContainer: () => HTMLElement;
   children?: React.ReactNode;
+  innerRef?: PortalRef;
 }
 
 export class Portal extends React.Component<PortalProps> {
@@ -14,6 +15,8 @@ export class Portal extends React.Component<PortalProps> {
     initRef = false
 
     componentDidMount() {
+        // @ts-ignore
+        this.props.innerRef({})
         this.props.didUpdate?.(this.props)
     }
 
@@ -34,8 +37,10 @@ export class Portal extends React.Component<PortalProps> {
             this.initRef = true;
         }
 
-        return this.containerRef
+        this.containerRef
             ? ReactDOM.unstable_renderSubtreeIntoContainer(this, React.Children.only(this.props.children), this.containerRef)
             : null
+
+        return null as JSX.Element
     }
 }

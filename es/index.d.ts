@@ -1,2 +1,2 @@
-import Drawer from './DrawerWrapper';
+import { default as Drawer } from './DrawerWrapper';
 export default Drawer;
